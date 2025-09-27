@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  frontend:
+    image: 
+
+  db:
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppassword
+      POSTGRES_DB: appdb
+    volume:
+       - pgdata:/var/lib/postgresql/data
+
+
+
