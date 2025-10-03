@@ -1,7 +1,14 @@
-version: "3.9"
 services:
   frontend:
-    image: 
+    image: frontend
+    ports:
+      - "8080:80"  # frontend is served on localhost:8080
+    networks:
+      - app-network
+    depends_on:
+      - user
+      - product
+      - order
 
   db:
     image: postgres:9.4
@@ -9,8 +16,46 @@ services:
       POSTGRES_USER: appuser
       POSTGRES_PASSWORD: apppassword
       POSTGRES_DB: appdb
-    volume:
-       - pgdata:/var/lib/postgresql/data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  order:
+    image: order-app
+    ports:
+      - "8002:8000"   # expose order service to host
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  product:
+    image: product-app
+    ports:
+      - "8001:8000"   # expose product service to host
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  user:
+    image: user-app
+    ports:
+      - "8000:8000"   # expose user service to host
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+
+
 
 
 

@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My App Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microservices Dashboard</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <h1>Welcome to Victoria's app</h1>
+  <div class="container">
+    <h1>Welcome to Victoria's Microservices Dashboard</h1>
 
-  <div class="controls">
-    <label for="serviceSelect">Select Service:</label>
-    <select id="serviceSelect">
-      <option value="user">Users</option>
-      <option value="product">Products</option>
-      <option value="order">Orders</option>
-    </select>
-    <button id="fetchBtn">Fetch Data</button>
+    <div class="controls">
+      <select id="serviceSelect">
+        <option value="user">Users</option>
+        <option value="product">Products</option>
+        <option value="order">Orders</option>
+      </select>
+      <button id="fetchBtn">Fetch Data</button>
+    </div>
+
+    <div id="tableHeading"></div>
+    <div id="app"></div>
   </div>
-
-  <div id="tableHeading"></div>
-  <div id="app"></div>
 
   <script src="app.js"></script>
 </body>
 </html>
+
