@@ -6,7 +6,21 @@ spec:
   replicas: 1
   selector:
     matchLabels:
+      app: postgres
   template:
     metadata:
-    spec: 
+      labels:
+        app: postgres
+    spec:
       containers:
+        - name: postgres
+          image: postgres:9.4
+          env:
+            - name: POSTGRES_DB
+              value: appdb
+            - name: POSTGRES_USER
+              value: appuser
+            - name: POSTGRES_PASSWORD
+              value: apppassword
+          ports:
+            - containerPort: 5432
