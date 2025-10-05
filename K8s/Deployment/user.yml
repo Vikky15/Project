@@ -16,4 +16,4 @@ spec:
        - name: user
          image:
          ports:
-            -containerPort: 800
+            -containerPort: 8000
